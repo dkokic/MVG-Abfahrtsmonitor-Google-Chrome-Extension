@@ -1,4 +1,8 @@
 {
+  "name": "Fahrplan",
+  "version": "0.1.0.0",
+  "description": "Immer up-to-date mit dem MVV.",
+  "permissions": [ "tabs", "http://www.mvg-live.de/" ],
   "background_page": "background.html",
   "options_page": "options.html",
   "browser_action":
@@ -7,13 +11,9 @@
     "default_title": "Fahrplan (dev)",
     "popup": "popup.html"
   },
-  "description": "Immer up-to-date mit dem MVV.",
   "icons":
   {
     "128": "images/rct128.png",
     "64": "images/rct64.png"
-  },
-  "name": "Fahrplan",
-  "permissions": [ "tabs" ],
-  "version": "0.0.1.0"
+  }
 }
