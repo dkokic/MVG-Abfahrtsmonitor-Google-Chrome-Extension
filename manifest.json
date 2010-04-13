@@ -7,13 +7,13 @@
   "options_page": "options.html",
   "browser_action":
   {
-    "default_icon": "images/rct64.png",
+    "default_icon": "images/mvg-logo-63x26.jpg",
     "default_title": "Fahrplan (dev)",
     "popup": "popup.html"
   },
   "icons":
   {
-    "128": "images/rct128.png",
-    "64": "images/rct64.png"
+    "128": "images/mvg-logo-63x26.jpg",
+    "64": "images/mvg-logo-63x26.jpg"
   }
 }
