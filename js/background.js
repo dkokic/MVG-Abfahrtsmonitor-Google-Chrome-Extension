@@ -10,6 +10,8 @@ var appConfig;
 var mvgService = new ServiceObject('http://www.mvg-live.de/serviceV1', 'nda251Axtbtdx5Vw');
 //
 var stationsArray = [];
+//
+var lastStation = 'Goetheplatz';
 
 //------------------------------------------------------------------------------
 //Main method: Everything starts here!
@@ -60,7 +62,7 @@ function ServiceObject(serviceUrl, apiKey) {
 		return this.serviceUrl + '/stations/json?apiKey=' + this.apiKey;
 	};
 	this.getStationInfoUrl = function(station) {
-		return this.serviceUrl + '/departures/' + station + '/json?apiKey=' + this.apiKey;
+		return this.serviceUrl + '/departures/' + escape(station) + '/json?apiKey=' + this.apiKey;
 	};
 }
 // 'http://www.mvg-live.de/serviceV1/stations/json?apiKey=nda251Axtbtdx5Vw';

@@ -12,16 +12,15 @@ var departuresArray;
 // Main method: Everything starts here!
 //------------------------------------------------------------------------------
 function main() {
-	showAllStations();
-	loadAllDepartures('Westfriedhof');
-	showAllDepartures();
+	showAllStations('#stationsDiv');
+	refreshAllDepartures()
 }
 
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-function showAllStationsOLD() {
-	var tableElement = $('<table>').addClass('stationsTable').appendTo($('#stationsDiv'));
+function showAllStationsOLD(targetDiv) {
+	var tableElement = $('<table>').addClass('stationsTable').appendTo($(targetDiv));
 	for (var i in bgPage.stationsArray) {
 		var trElement =$('<tr>').appendTo(tableElement);
 		var tdElement =$('<td>').text(bgPage.stationsArray[i]).appendTo(trElement);
@@ -31,18 +30,39 @@ function showAllStationsOLD() {
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-function showAllStations() {
-	var tableElement = $('<select>').addClass('stationsTable').appendTo($('#stationsDiv'));
+function showAllStations(targetDiv) {
+	var selectElement = $('<select>').addClass('stationsTable').appendTo($(targetDiv));
+	selectElement.select(function() {console.log(selectElement.value);});
 	for (var i in bgPage.stationsArray) {
-		var tdElement =$('<option>').attr({value:bgPage.stationsArray[i]}).text(bgPage.stationsArray[i]).appendTo(tableElement);
+		var optionElement =$('<option>').attr({value:bgPage.stationsArray[i]}).text(bgPage.stationsArray[i]).appendTo(selectElement);
 	}
+	var buttonElement = $('<button>').text('Aktuelisieren').appendTo($(targetDiv));
+	buttonElement.click(function() {setStationAndRefreshAllDepartures(selectElement['0'].value);});
 }
 
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-function showAllDepartures() {
-	var tableElement = $('<table>').addClass('departuresTable').appendTo($('#departuresDiv'));
+function setStationAndRefreshAllDepartures(newStation) {
+	bgPage.lastStation = newStation;
+	refreshAllDepartures();
+}
+
+//------------------------------------------------------------------------------
+//
+//------------------------------------------------------------------------------
+function refreshAllDepartures() {
+	console.log(bgPage.lastStation);
+	loadAllDepartures(bgPage.lastStation);  // TODO ß !!!
+	showAllDepartures('#departuresDiv');
+	
+}
+
+//------------------------------------------------------------------------------
+//
+//------------------------------------------------------------------------------
+function showAllDepartures(targetDiv) {
+	var tableElement = $('<table>').addClass('departuresTable').appendTo($(targetDiv));
 	for (var i in departuresArray) {
 		var trElement =$('<tr>').appendTo(tableElement);
 		var tdElement =$('<td>').text(departuresArray[i].time).appendTo(trElement);

@@ -1,6 +1,6 @@
 {
   "name": "Fahrplan",
-  "version": "0.1.0.0",
+  "version": "0.2.0.0",
   "description": "Immer up-to-date mit dem MVV.",
   "permissions": [ "tabs", "http://www.mvg-live.de/" ],
   "background_page": "background.html",
