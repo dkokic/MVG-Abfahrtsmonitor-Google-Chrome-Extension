@@ -36,7 +36,10 @@ function showAllStations(targetDiv) {
 	for (var i in bgPage.stationsArray) {
 		var optionElement =$('<option>').attr({value:bgPage.stationsArray[i]}).text(bgPage.stationsArray[i]).appendTo(selectElement);
 	}
-	var buttonElement = $('<button>').text('Aktuelisieren').appendTo($(targetDiv));
+	//
+	selectElement['0'].value = bgPage.lastStation;
+	//
+	var buttonElement = $('<button>').text('Aktualisieren').appendTo($(targetDiv));
 	buttonElement.click(function() {setStationAndRefreshAllDepartures(selectElement['0'].value);});
 }
 
@@ -44,7 +47,7 @@ function showAllStations(targetDiv) {
 //
 //------------------------------------------------------------------------------
 function setStationAndRefreshAllDepartures(newStation) {
-	bgPage.lastStation = newStation;
+	bgPage.storeLastStation(newStation);
 	refreshAllDepartures();
 }
 
@@ -53,7 +56,7 @@ function setStationAndRefreshAllDepartures(newStation) {
 //------------------------------------------------------------------------------
 function refreshAllDepartures() {
 	console.log(bgPage.lastStation);
-	loadAllDepartures(bgPage.lastStation);  // TODO ß !!!
+	//loadAllDepartures(bgPage.lastStation);
 	showAllDepartures('#departuresDiv');
 	
 }
@@ -62,6 +65,7 @@ function refreshAllDepartures() {
 //
 //------------------------------------------------------------------------------
 function showAllDepartures(targetDiv) {
+	$(targetDiv).empty();
 	var tableElement = $('<table>').addClass('departuresTable').appendTo($(targetDiv));
 	for (var i in departuresArray) {
 		var trElement =$('<tr>').appendTo(tableElement);
@@ -71,21 +75,4 @@ function showAllDepartures(targetDiv) {
 	}
 }
 
-//------------------------------------------------------------------------------
-//
-//------------------------------------------------------------------------------
-function loadAllDepartures(station) {
-	var mvgURL = 'http://www.mvg-live.de/serviceV1/departures/Westfriedhof/json?apiKey=nda251Axtbtdx5Vw&maxEntries=50';
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', bgPage.mvgService.getStationInfoUrl(station), false);
-	xhr.onreadystatechange = function() {
-		if (this.readyState == 4) {
-			var responseObject = JSON.parse(this.responseText);
-			console.log(responseObject);
-			departuresArray = responseObject.mvgLiveResponse.departures;
-			//departuresArray.sort();
-			console.log(departuresArray);
-		}
-	};
-	xhr.send();
-}
+

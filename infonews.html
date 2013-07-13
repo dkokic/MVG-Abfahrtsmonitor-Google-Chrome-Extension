@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>MVG Abfahrtsmonitor - Extension Infos</title>
+    <link href="css/infonews.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/3dparty/jquery.js"></script>
+    <script type="text/javascript" src="js/3dparty/jquery.selectboxes.pack.js"></script>
+    <script language="JavaScript" src="js/infonews.js"></script>
+    <script language="JavaScript" src="js/gui.js"></script>
+  </head>
+  <body onload="main();">
+    <div id="headerTableDiv"></div>
+    <div id="headerBorderDiv"></div>
+    <h1>Thanks for choosing the MVG Abfahrtsmonitor</h1>
+    <br><br>
+    <h2>Changelog</h2>
+    <h3>version 0.3</h3>
+    <ul>
+      <li>introduced the google analytics.</li>
+    </ul>
+    <hr>
+    <h3>version 0.2</h3>
+    <ul>
+      <li>the 1st public beta ... any feedback more than welcome ;-)</li>
+      <li>last station persists in localStorage and some typos corrected.</li>
+    </ul>
+    <hr>
+    <h3>version 0.1</h3>
+    <ul>
+      <li>project initialisation.</li>
+    </ul>
+    <div id="footerDiv"></div>
+
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-3928511-4']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+      })();
+    </script>
+  </body>
+</html>
