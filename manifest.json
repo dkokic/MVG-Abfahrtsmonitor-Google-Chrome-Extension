@@ -1,20 +1,24 @@
 {
+   "manifest_version": 2,
+
+   "name": "MVG Abfahrtsmonitor",
+   "description": "Immer up-to-date mit dem MVV.",
+   "version": "0.4.0.0",
+
+   "permissions": [ "tabs", "http://www.mvg-live.de/" ],
+
    "background_page": "background.html",
+   "options_page": "options.html",
+   
    "browser_action": {
       "default_icon": "images/mvg-logo-96x96.png",
       "default_title": "MVG Abfahrtsmonitor (dev)",
-      "popup": "popup.html"
+      "default_popup": "popup.html"
    },
-   "description": "Immer up-to-date mit dem MVV.",
+
    "icons": {
       "128": "images/mvg-logo-63x26.jpg",
       "48": "images/mvg-logo-96x96.png",
       "64": "images/mvg-logo-63x26.jpg"
-   },
-   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjxIcMBdLEfm8E7IkGKvFerFfXvZiQLe/qsUuWnhconHmAD/PDl8IF51Si6oWzxNByPHbHtlF3la54+bASIPhes015zMS1coWkkvS2F0aaHstS2/FlQoD0TMdaVfYs8P09O3IMRbUzRivfK7fh5VdjV85T2l7CXydH53DYyGTmjQIDAQAB",
-   "name": "MVG Abfahrtsmonitor",
-   "options_page": "options.html",
-   "permissions": [ "tabs", "http://www.mvg-live.de/" ],
-   "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "0.3.0.1"
+   }
 }
