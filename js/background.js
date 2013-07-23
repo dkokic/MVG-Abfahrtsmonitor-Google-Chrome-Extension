@@ -1,6 +1,22 @@
 //
 // Script for the background.html
 //
+
+//------------------------------------------------------------------------------
+// Since Manifest v2 does not allow inline scripts and event handlers ...
+//------------------------------------------------------------------------------
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-3928511-4']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+window.addEventListener("load", main);
+
 //------------------------------------------------------------------------------
 // Global variables
 //------------------------------------------------------------------------------
@@ -10,7 +26,7 @@ var stationsArray = ["Aberlestraße", "Abtstraße", "Ackermannbogen", "Ackermann
 var lastStation;
 
 //------------------------------------------------------------------------------
-//Main method: Everything starts here!
+// Main method: Everything starts here!
 //------------------------------------------------------------------------------
 function main() {
   //
@@ -23,19 +39,22 @@ function main() {
 //
 //------------------------------------------------------------------------------
 function restoreState() {
-  //
   fetchLastStation();
 }
 
+//------------------------------------------------------------------------------
 // Fetches/Initialises the lastStation from the localStorage.
+//------------------------------------------------------------------------------
 function fetchLastStation() {
 	lastStation = localStorage['lastStation'];
 	if (lastStation === undefined)
 		storeLastStation('Goetheplatz');
 }
 
+//------------------------------------------------------------------------------
 // Modifys/Persists the maxPopupLength to the localStorage.
 // @param newMaxPopupLength maxPopupLength to store in the localStorage
+//------------------------------------------------------------------------------
 function storeLastStation(newStation) {
 	lastStation = newStation;
 	localStorage.setItem('lastStation', lastStation);
